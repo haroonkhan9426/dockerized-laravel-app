@@ -28,13 +28,13 @@ services:
     #   - ./src:/var/www/src_code
     
   # database:
-  database:
-    container_name: db_service
-    image: mysql:5.7
-    # ports:
-    #   - 3306:3306
-    env_file:
-      - ./env/mysql.env
+  # database:
+  #   container_name: db_service
+  #   image: mysql:5.7
+  #   # ports:
+  #   #   - 3306:3306
+  #   env_file:
+  #     - ./env/mysql.env
 
   # composer:
   composer:
