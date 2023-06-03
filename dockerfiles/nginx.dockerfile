@@ -8,6 +8,8 @@ WORKDIR /var/www/src_code
 
 COPY src .
 
+RUN mv .env.example .env
+
 
 
 
