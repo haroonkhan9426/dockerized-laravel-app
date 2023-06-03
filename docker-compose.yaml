@@ -1,10 +1,9 @@
 version: '3.8'
 
 services:
-
 #web-server configurations
   server:
-    build: 
+    build:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
     container_name: nginx_service
@@ -14,16 +13,16 @@ services:
     #   - ./src:/var/www/src_code
     #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
-      - php
+      - app
       # - database
 
 
 #php conigurations
-  php:
-    container_name: php_service
+  app:
+    container_name: app_service
     build: 
       context: .
-      dockerfile: dockerfiles/php.dockerfile
+      dockerfile: dockerfiles/app.dockerfile
     # volumes:
     #   - ./src:/var/www/src_code
     
@@ -37,22 +36,22 @@ services:
   #     - ./env/mysql.env
 
   # composer:
-  composer:
-    container_name: composer_service
-    build:
-      context: ./dockerfiles
-      dockerfile: composer.dockerfile
-    volumes:
-      - ./src:/var/www/src_code
+  # composer:
+  #   container_name: composer_service
+  #   build:
+  #     context: ./dockerfiles
+  #     dockerfile: composer.dockerfile
+  #   volumes:
+  #     - ./src:/var/www/src_code
   # artisan:
-  artisan:
-    container_name: artisan_service
-    build: 
-      context: .
-      dockerfile: dockerfiles/php.dockerfile
-    # volumes:
-    #   - ./src:/var/www/src_code
-    entrypoint: ["php", "/var/www/src_code/artisan"]
+  # artisan:
+  #   container_name: artisan_service
+  #   build: 
+  #     context: .
+  #     dockerfile: dockerfiles/app.dockerfile
+  #   # volumes:
+  #   #   - ./src:/var/www/src_code
+  #   entrypoint: ["php", "/var/www/src_code/artisan"]
 
   # npm:
   npm:
